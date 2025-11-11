@@ -177,14 +177,208 @@ function createBinaryRain() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('neural-canvas');
-    const neuralNetwork = new NeuralNetwork(canvas);
-    neuralNetwork.animate();
+// Enhanced project data structure with proper URLs and detail pages
+const projects = [
+    {
+        id: 'tastelab-ai-toolkit',
+        title: "TasteLab AI Toolkit",
+        description: "VLM-powered system for automated sensory data processing at BUas TasteLab facility. Features Flask dashboard, user authentication, and multimodal analysis for 8 cameras, wearables, and eye-tracking devices.",
+        tags: ["Computer Vision", "Flask", "Machine Learning", "VLM", "NLP"],
+        github: null,
+        detailPage: "projects/tastelab-ai-toolkit.html",
+        image: "assets/projects/tastelab-thumbnail.jpg", // Optional: add project thumbnails
+        status: "completed" // active, completed, in-progress
+    },
+    {
+        id: 'emotion-detection-pipeline',
+        title: "Emotion Detection Pipeline - CIA",
+        description: "Automated cloud application for Content Intelligence Agency. Processes video/audio to classify emotions per sentence with confidence scores. Deployed on Azure with web interface, API, and CLI. Supports 6 base emotions with custom emotion capabilities.",
+        tags: ["Azure ML", "NLP", "MLOps", "API"],
+        github: null,
+        detailPage: "projects/emotion-detection-pipeline.html",
+        image: "assets/projects/emotion-pipeline-thumbnail.jpg",
+        status: "completed"
+    },
+    {
+        id: 'root-detection-system',
+        title: "Root Detection System - NPEC",
+        description: "Advanced segmentation system for Netherlands Plant Eco-phenotyping Centre. Analyzes Arabidopsis thaliana root systems in Petri dishes using the Hades phenotyping system. Enables automated plant-microbe interaction studies with high-throughput imaging.",
+        tags: ["Computer Vision", "Deep Learning", "Biology", "Segmentation"],
+        github: null,
+        detailPage: "projects/root-detection-system.html",
+        image: "assets/projects/root-detection-thumbnail.jpg",
+        status: "completed"
+    },
+    {
+        id: 'chatbot-effectiveness',
+        title: "Chatbot Effectiveness Research",
+        description: "Mixed-methods study with Digiwerkplaats on SME customer service automation. Surveyed 100+ respondents and conducted 5 stakeholder interviews. Found 4.2/5 clarity rating with hybrid bot-human models as optimal solution for resource-constrained SMEs.",
+        tags: ["Research", "NLP", "Data Analysis", "Business"],
+        github: null,
+        detailPage: "projects/chatbot-effectiveness.html",
+        image: "assets/projects/chatbot-research-thumbnail.jpg",
+        status: "completed"
+    },
+    {
+        id: 'hand-tracking-interactive',
+        title: "Interactive Hand Tracking",
+        description: "Real-time computer vision system enabling finger-based drawing on screen. Implements advanced hand landmark detection and gesture recognition for intuitive human-computer interaction without physical touch interfaces.",
+        tags: ["Computer Vision", "MediaPipe", "Real-time", "Python"],
+        github: null,
+        detailPage: "projects/hand-tracking-interactive.html",
+        image: "assets/projects/hand-tracking-thumbnail.jpg",
+        status: "completed"
+    },
+    {
+        id: 'plant-species-app',
+        title: "Plant Species Detection App",
+        description: "Mobile application for automated identification of 6 plant species using deep learning. Features real-time camera integration, offline capability, and detailed species information for botanical research and education.",
+        tags: ["Deep Learning", "Mobile Dev", "TensorFlow", "CNN"],
+        github: null,
+        detailPage: "projects/plant-species-app.html",
+        image: "assets/projects/plant-detection-thumbnail.jpg",
+        status: "completed"
+    }
+];
+
+// Enhanced project rendering with proper navigation
+function renderProjects() {
+    const grid = document.getElementById('projectsGrid');
     
-    createDataParticles();
-    createBinaryRain();
-});
+    projects.forEach((project, index) => {
+        const card = document.createElement('div');
+        card.className = 'card project-card';
+        card.style.animationDelay = `${index * 100}ms`;
+        card.dataset.projectId = project.id;
+        
+        // Create status badge if needed
+        const statusBadge = project.status === 'in-progress' ? 
+            '<span class="status-badge in-progress">In Progress</span>' : '';
+        
+        // Generate tags HTML
+        const tagsHtml = project.tags.map(tag => 
+            `<span class="tag">${tag}</span>`
+        ).join('');
+        
+        // Handle GitHub button - show only if repository exists
+        const githubButton = project.github ? 
+            `<a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-action="github">
+                <i class="fa-brands fa-github"></i>
+                Code
+            </a>` : 
+            `<button class="btn btn-outline disabled" disabled title="Private repository">
+                <i class="fa-solid fa-lock"></i>
+                Private
+            </button>`;
+        
+        // Create the card HTML
+        card.innerHTML = `
+            ${statusBadge}
+            <h3 class="card-title">${project.title}</h3>
+            <p class="project-description">${project.description}</p>
+            
+            <div class="tags-container">
+                ${tagsHtml}
+            </div>
+            
+            <div class="button-group">
+                ${githubButton}
+                <a href="${project.detailPage}" class="btn btn-primary" data-action="details">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Details
+                </a>
+            </div>
+        `;
+        
+        // Add click handler for the entire card (optional)
+        card.addEventListener('click', function(e) {
+            // Don't trigger if clicking on buttons
+            if (!e.target.closest('.btn')) {
+                navigateToProject(project.id);
+            }
+        });
+        
+        grid.appendChild(card);
+    });
+}
+
+// Navigation function for project details
+function navigateToProject(projectId) {
+    const project = projects.find(p => p.id === projectId);
+    if (project && project.detailPage) {
+        // You can choose between standard navigation or single-page app behavior
+        window.location.href = project.detailPage;
+        
+        // Alternative: Load content dynamically (SPA approach)
+        // loadProjectDetails(projectId);
+    }
+}
+
+// Optional: Function to load project details dynamically (SPA approach)
+function loadProjectDetails(projectId) {
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
+    
+    // Create a modal or navigate to a dynamic route
+    // This is an example of creating a modal overlay
+    const modal = document.createElement('div');
+    modal.className = 'project-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>${project.title}</h2>
+            <div class="project-full-description">
+                <!-- Load full project details here -->
+                <p>Loading project details...</p>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Load actual content via fetch or have it pre-defined
+    fetch(`/api/projects/${projectId}`)
+        .then(response => response.json())
+        .then(data => {
+            // Update modal with full project details
+        })
+        .catch(err => {
+            console.error('Error loading project details:', err);
+        });
+}
+
+// Track project views (analytics)
+function trackProjectInteraction(projectId, action) {
+    // Implement analytics tracking here if needed
+    console.log(`Project interaction: ${projectId} - ${action}`);
+    
+    // Example: Google Analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+            'event_category': 'Projects',
+            'event_label': projectId
+        });
+    }
+}
+
+function initScrollAnimation() {
+    const cards = document.querySelectorAll('.card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+}
 
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -238,110 +432,15 @@ function scrollToNextSection() {
     }
 }
 
-const projects = [
-    {
-        title: "TasteLab AI Toolkit",
-        description: "VLM-powered system for automated sensory data processing at BUas TasteLab facility. Features Flask dashboard, user authentication, and multimodal analysis for 8 cameras, wearables, and eye-tracking devices.",
-        tags: ["Computer Vision", "Flask", "Machine Learning", "VLM", "NLP"],
-        github: "https://github.com/ayumichotoe/taste-lab-toolkit",
-        readmore: "#",
-    },
-    {
-        title: "Emotion Detection Pipeline - CIA",
-        description: "Automated cloud application for Content Intelligence Agency. Processes video/audio to classify emotions per sentence with confidence scores. Deployed on Azure with web interface, API, and CLI. Supports 6 base emotions with custom emotion capabilities.",
-        tags: ["Azure ML", "NLP", "MLOps", "API"],
-        github: "#",
-        readmore: "#",
-    },
-    {
-        title: "Root Detection System - NPEC",
-        description: "Advanced segmentation system for Netherlands Plant Eco-phenotyping Centre. Analyzes Arabidopsis thaliana root systems in Petri dishes using the Hades phenotyping system. Enables automated plant-microbe interaction studies with high-throughput imaging.",
-        tags: ["Computer Vision", "Deep Learning", "Biology", "Segmentation"],
-        github: "#",
-        readmore: "#",
-    },
-    {
-        title: "Chatbot Effectiveness Research",
-        description: "Mixed-methods study with Digiwerkplaats on SME customer service automation. Surveyed 100+ respondents and conducted 5 stakeholder interviews. Found 4.2/5 clarity rating with hybrid bot-human models as optimal solution for resource-constrained SMEs.",
-        tags: ["Research", "NLP", "Data Analysis", "Business"],
-        github: "#",
-        readmore: "#",
-    },
-    {
-        title: "Interactive Hand Tracking",
-        description: "Real-time computer vision system enabling finger-based drawing on screen. Implements advanced hand landmark detection and gesture recognition for intuitive human-computer interaction without physical touch interfaces.",
-        tags: ["Computer Vision", "MediaPipe", "Real-time", "Python"],
-        github: "#",
-        readmore: "#",
-    },
-    {
-        title: "Plant Species Detection App",
-        description: "Mobile application for automated identification of 6 plant species using deep learning. Features real-time camera integration, offline capability, and detailed species information for botanical research and education.",
-        tags: ["Deep Learning", "Mobile Dev", "TensorFlow", "CNN"],
-        github: "#",
-        readmore: "#",
-    }
-];
-
-function renderProjects() {
-    const grid = document.getElementById('projectsGrid');
-    
-    projects.forEach((project, index) => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.style.animationDelay = `${index * 100}ms`;
-        
-        const tagsHtml = project.tags.map(tag => 
-            `<span class="tag">${tag}</span>`
-        ).join('');
-        
-        card.innerHTML = `
-            <h3 class="card-title">${project.title}</h3>
-            <p class="project-description">${project.description}</p>
-            
-            <div class="tags-container">
-                ${tagsHtml}
-            </div>
-            
-            <div class="button-group">
-                <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                    <i class="fa-brands fa-github"></i>
-                    Code
-                </a>
-                <a href="${project.readmore}" class="btn btn-primary">
-                    <i class="fa-solid fa-circle-info"></i>
-                    Details
-                </a>
-            </div>
-        `;
-        
-        grid.appendChild(card);
-    });
-}
-
-function initScrollAnimation() {
-    const cards = document.querySelectorAll('.card');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    cards.forEach(card => {
-        observer.observe(card);
-    });
-}
-
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
     e.preventDefault();
     
+    const formData = new FormData(this);
     const formMessage = document.getElementById('formMessage');
+    
+    // You can implement actual form submission here
+    // Example: send to your backend or email service
+    
     formMessage.className = 'form-message success';
     formMessage.textContent = 'Thank you for your message! I\'ll get back to you soon.';
     formMessage.style.display = 'block';
@@ -353,6 +452,29 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('neural-canvas');
+    if (canvas) {
+        const neuralNetwork = new NeuralNetwork(canvas);
+        neuralNetwork.animate();
+    }
+    
+    createDataParticles();
+    createBinaryRain();
+    
     renderProjects();
+    
     setTimeout(initScrollAnimation, 100);
+    
+    document.getElementById('projectsGrid')?.addEventListener('click', function(e) {
+        const button = e.target.closest('.btn');
+        if (button) {
+            const projectCard = button.closest('.project-card');
+            const projectId = projectCard?.dataset.projectId;
+            const action = button.dataset.action;
+            
+            if (projectId && action) {
+                trackProjectInteraction(projectId, action);
+            }
+        }
+    });
 });

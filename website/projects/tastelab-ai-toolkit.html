@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteLab AI Toolkit - Ayumi's Portfolio</title>
+    <link rel="stylesheet" href="../project-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-wrapper">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html#projects" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Projects
+            </a>
+            <div class="project-actions">
+                <a href="https://github.com/ayumichotoe/taste-lab-toolkit" target="_blank" class="btn btn-outline">
+                    <i class="fa-brands fa-github"></i>
+                    View Code
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="project">
+            <div class="project-header">
+                <div>
+                    <h1 class="project-title">TasteLab AI Toolkit</h1>
+                    <p class="project-subtitle">
+                        VLM-powered system for automated sensory data processing at BUas TasteLab facility
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="tags-container">
+                <span class="tag">Computer Vision</span>
+                <span class="tag">Flask</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">VLM</span>
+                <span class="tag">NLP</span>
+            </div>
+
+            <!-- Project Visual -->
+            <div class="project-visual">
+                <div class="project-visual-content">
+                    <div class="project-initial">T</div>
+                    <!-- Replace with actual project image when available -->
+                    <!-- <img src="../assets/projects/tastelab-hero.jpg" alt="TasteLab AI Toolkit" class="project-image"> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="content-section">
+            <h2 class="section-title">Overview</h2>
+            <div class="section-content">
+                <p>
+                    The TasteLab AI Toolkit is an advanced Vision-Language Model (VLM) powered system designed to revolutionize sensory data processing at the BUas TasteLab facility. This comprehensive solution integrates multiple data streams from 8 high-resolution cameras, wearable devices, and eye-tracking technology to provide real-time insights into consumer behavior and food preferences.
+                </p>
+                <p>
+                    Built over an intensive 8-week development period, the system features a Flask-based dashboard with robust user authentication, experiment management capabilities, and sophisticated multimodal analysis tools. The project addresses the complex challenge of processing and interpreting diverse sensory inputs in real-time, enabling researchers to gain unprecedented insights into consumer interactions with food products.
+                </p>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="content-section">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h3 class="feature-title">Multi-Camera Integration</h3>
+                    <p class="feature-description">
+                        Seamlessly processes data from 8 synchronized cameras for comprehensive behavioral analysis
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="feature-title">Eye-Tracking Analysis</h3>
+                    <p class="feature-description">
+                        Advanced eye-tracking integration to understand visual attention patterns and preferences
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3 class="feature-title">Secure Authentication</h3>
+                    <p class="feature-description">
+                        Robust user authentication system ensuring data privacy and controlled access
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Real-time Dashboard</h3>
+                    <p class="feature-description">
+                        Interactive Flask dashboard providing live visualization of sensory data and insights
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">VLM Processing</h3>
+                    <p class="feature-description">
+                        Vision-Language Model integration for sophisticated multimodal data interpretation
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-print"></i>
+                    </div>
+                    <h3 class="feature-title">3D Food Printer Support</h3>
+                    <p class="feature-description">
+                        Integration with 3D food printing technology for experimental product development
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section class="content-section">
+            <h2 class="section-title">Technical Implementation</h2>
+            <div class="section-content">
+                <p>
+                    The system architecture leverages a microservices approach with Flask serving as the primary web framework. The backend processes multimodal data streams through a sophisticated pipeline that includes real-time video processing, sensor data aggregation, and machine learning inference.
+                </p>
+                <p>
+                    Key technical challenges addressed include synchronization of multiple data streams, efficient processing of high-volume sensory data, and real-time visualization of complex analytical results. The implementation features advanced caching mechanisms, asynchronous processing capabilities, and scalable data storage solutions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="content-section">
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <i class="fa-brands fa-python"></i>
+                    <span>Python</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Flask</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-solid fa-database"></i>
+                    <span>PostgreSQL</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>TensorFlow</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-solid fa-video"></i>
+                    <span>OpenCV</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-docker"></i>
+                    <span>Docker</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Plotly</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results & Impact -->
+        <section class="content-section">
+            <h2 class="section-title">Results & Impact</h2>
+            <div class="section-content" style="margin-top: 2rem;">
+                <p>
+                    Project is on-going until December 2025
+                </p>
+            </div>
+        </section>
+
+        <!-- Project Navigation -->
+        <nav class="project-navigation">
+            <a href="#" class="nav-link prev">
+                <i class="fa-solid fa-arrow-left"></i>
+                <div>
+                    <div class="nav-link-label">Previous Project</div>
+                    <div class="nav-link-title">Plant Species Detection</div>
+                </div>
+            </a>
+            <a href="emotion-detection-pipeline.html" class="nav-link next">
+                <div>
+                    <div class="nav-link-label">Next Project</div>
+                    <div class="nav-link-title">Emotion Detection Pipeline</div>
+                </div>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </nav>
+    </main>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (20 + Math.random() * 10) + 's';
+                
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
+    </script>
+</body>
+</html>
