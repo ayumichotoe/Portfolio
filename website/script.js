@@ -215,17 +215,17 @@ const projects = [
         description: "Mixed-methods study with Digiwerkplaats on SME customer service automation. Surveyed 100+ respondents and conducted 5 stakeholder interviews. Found 4.2/5 clarity rating with hybrid bot-human models as optimal solution for resource-constrained SMEs.",
         tags: ["Research", "NLP", "Data Analysis", "Business"],
         github: null,
-        detailPage: "projects/chatbot-effectiveness.html",
+        detailPage: "projects/",
         image: "assets/projects/chatbot-research-thumbnail.jpg",
         status: "completed"
     },
     {
-        id: 'hand-tracking-interactive',
+        id: 'hand-tracking',
         title: "Interactive Hand Tracking",
         description: "Real-time computer vision system enabling finger-based drawing on screen. Implements advanced hand landmark detection and gesture recognition for intuitive human-computer interaction without physical touch interfaces.",
         tags: ["Computer Vision", "MediaPipe", "Real-time", "Python"],
         github: null,
-        detailPage: "projects/hand-tracking-interactive.html",
+        detailPage: "projects/hand-tracking.html",
         image: "assets/projects/hand-tracking-thumbnail.jpg",
         status: "completed"
     },
